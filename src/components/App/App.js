@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import shortid from "shortid";
-import FormContact from "./components/FormContact/FormContact";
-import Filter from "./components/Filter/Filter";
-import ContactsList from "./components/ContactsList/ContactsList";
+import FormContact from "../FormContact/FormContact";
+import Filter from "../Filter/Filter";
+import ContactsList from "../ContactsList/ContactsList";
 import "./app.scss";
 
 class App extends Component {
@@ -14,8 +14,6 @@ class App extends Component {
       { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
     ],
     filter: "",
-    name: "",
-    number: "",
   };
 
   addContact = (name, number) => {
