@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import shortid from "shortid";
+// import shortid from "shortid";
 import s from "./FormContact.module.css";
 import PropTypes from "prop-types";
 import { AiOutlineUserAdd } from "react-icons/ai";
@@ -10,8 +10,9 @@ class ContactForm extends Component {
     number: "",
   };
 
-  nameInputId = shortid.generate();
-  numberInpitId = shortid.generate();
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
 
   handleChange = (e) => {
     const { name, value } = e.currentTarget;
@@ -44,7 +45,6 @@ class ContactForm extends Component {
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             value={this.state.name}
             onChange={this.handleChange}
-            id={this.nameInputId}
             title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             required
           />
@@ -58,7 +58,6 @@ class ContactForm extends Component {
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             value={this.state.number}
             onChange={this.handleChange}
-            id={this.numberInputId}
             title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
             required
           />
@@ -72,11 +71,5 @@ class ContactForm extends Component {
     );
   }
 }
-
-ContactForm.propTypes = {
-  name: PropTypes.string,
-  number: PropTypes.string,
-  value: PropTypes.string,
-};
 
 export default ContactForm;
